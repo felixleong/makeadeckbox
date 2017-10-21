@@ -4,16 +4,23 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/lodash": "^4.14.78",
+    "lodash": "^4.17.4",
     "svg-units": "https://github.com/wolfgang42/svg-units",
-    "svg.js": "^2.6.3",
-    "webpack": "^3.8.1"
+    "svg.js": "^2.6.3"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "html-webpack-plugin": "^2.30.1",
     "ts-loader": "^3.0.5",
     "typescript": "^2.5.3",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
   },
   "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
