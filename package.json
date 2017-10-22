@@ -1,8 +1,10 @@
 {
-  "name": "deckbox",
+  "name": "makeadeckbox",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A web-based client to making parametric deck boxes.",
+  "url": "https://github.com/felixleong/makeadeckbox",
+  "homepage": "https://github.com/felixleong/makeadeckbox",
+  "main": "dist/index.bundle.js",
   "dependencies": {
     "@types/lodash": "^4.14.78",
     "@types/react": "^16.0.16",
