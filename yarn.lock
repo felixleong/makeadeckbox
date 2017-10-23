@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/decimal.js@^0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/decimal.js/-/decimal.js-0.0.31.tgz#cb2a797ccb0cbb0ead0b91134bd6b02429db931f"
+
 "@types/lodash@^4.14.78":
   version "4.14.78"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.78.tgz#f26a0b38a44a832c652964803c7e48be05939d3f"
@@ -681,6 +685,10 @@ debug@^3.1.0:
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
+
+decimal.js@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-7.3.0.tgz#39f6c8dfc39385c3f3c540aec59f7d2cc1b93d1c"
 
 deep-equal@^1.0.1:
   version "1.0.1"
@@ -2923,6 +2931,10 @@ supports-color@^4.0.0, supports-color@^4.2.1:
 svg.js@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.6.3.tgz#ac07c61f54ada2745548800307bb45b4b3b519eb"
+
+svg.path.js@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/svg.path.js/-/svg.path.js-0.6.2.tgz#c5ec90685379056bfb70bd77e8f22ad1768ddcc8"
 
 tapable@^0.2.7:
   version "0.2.8"
