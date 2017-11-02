@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Sample SVG</title>
+</head>
+
+<body>
+  <svg id="drawing" width="257mm" height="170mm" style="width: 100%">
+    <!-- The clip area
+    <rect x="20mm" y="35mm" width="63mm" height="88mm" />
+
+    <g transform="scale(3.779527) translate(103 35)">
+      <path d="
+      M 0 0
+
+      h 24
+      a 8 8 0 0 0 15 0
+      h 24
+
+      v 88
+      h -63
+      z" />
+    </g>
+    -->
+    
+    <!-- 96 dpi: Would expect  -->
+    <g
+        id="deckbox"
+        transform="scale(3.779527) translate(1 1)"
+        style="fill: none; stroke: #faa; stroke-width: 0.264585pt">
+      <path d="
+      M 0 35
+
+      h 0.5
+      v -7
+      a 8 8 90 0 1 8 -8
+      h 11
+      v 15
+      h 0.5
+
+      v -20
+      v -7
+      a 8 8 90 0 1 8 -8
+      h 47
+      a 8 8 -90 0 1 8 8
+      v 7
+      v 20
+
+      h 0.5
+      v -15
+      h 11
+      a 8 8 -90 0 1 8 8
+      v 7
+      h 0.5
+
+      h 24
+      a 8 8 0 0 0 15 0
+      h 24
+
+      l 15 8
+      v 72
+      l -15 8
+
+      v 20
+      h -63
+      v -20
+
+      l -3 15
+      h -14
+      l -3 -15
+
+      v 18
+      h -63
+      v -18
+
+      l -3 15
+      h -14
+      l -3 -15
+
+      z" />
+
+      <!-- Top flap notches -->
+      <path d="
+      M 20 14
+      h 2
+      a 2 2 -90 0 1 2 1
+      " />
+      <path d="
+      M 83 14
+      h -2
+      a 2 2 90 0 0 -2 1
+      " />
+    </g>
+
+    <g
+        id="fold"
+        transform="translate(3.7795 3.7795)"
+        style="fill: none; stroke: #ccc; stroke-width: 1pt; stroke-dasharray: 1mm">
+      <line x1="24mm" y1="15mm" x2="79mm" y2="15mm" />
+      <line x1="0mm" y1="35mm" x2="103mm" y2="35mm" />
+      <line x1="0mm" y1="123mm" x2="166mm" y2="123mm" />
+
+      <line x1="20mm" y1="35mm" x2="20mm" y2="123mm" />
+      <line x1="83mm" y1="35mm" x2="83mm" y2="123mm" />
+      <line x1="103mm" y1="35mm" x2="103mm" y2="123mm" />
+      <line x1="166mm" y1="35mm" x2="166mm" y2="123mm" />
+    </g>
+  </svg>
+</body>
+</html>
