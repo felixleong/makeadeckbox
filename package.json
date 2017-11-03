@@ -7,15 +7,15 @@
   "main": "dist/index.bundle.js",
   "dependencies": {
     "@types/decimal.js": "^0.0.31",
+    "@types/handlebars": "^4.0.36",
     "@types/lodash": "^4.14.78",
     "@types/react": "^16.0.16",
     "@types/react-dom": "^16.0.2",
-    "@types/snapsvg": "^0.4.29",
     "decimal.js": "^7.3.0",
+    "handlebars": "^4.0.11",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "snapsvg-cjs": "^0.0.6",
     "svg.js": "^2.6.3"
   },
   "devDependencies": {
