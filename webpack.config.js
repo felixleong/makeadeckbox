@@ -20,6 +20,10 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
+      },
+      {
+         test: require.resolve('snapsvg'),
+         use: 'imports-loader?this=>window,fix=>module.exports=0',
       }
     ]
   },

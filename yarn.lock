@@ -10,6 +10,10 @@
   version "4.14.78"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.78.tgz#f26a0b38a44a832c652964803c7e48be05939d3f"
 
+"@types/mina@*":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@types/mina/-/mina-0.4.0.tgz#7ff786a5f7d1ae4b41978cb3137be071fb879316"
+
 "@types/node@*":
   version "8.0.46"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.46.tgz#6e1766b2d0ed06631d5b5f87bb8e72c8dbb6888e"
@@ -24,6 +28,12 @@
 "@types/react@*", "@types/react@^16.0.16":
   version "16.0.16"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.16.tgz#f0652a5a3acc1706ec729c8fba3976acbf45b827"
+
+"@types/snapsvg@^0.4.29":
+  version "0.4.29"
+  resolved "https://registry.yarnpkg.com/@types/snapsvg/-/snapsvg-0.4.29.tgz#572961360a95aa17df8ba1c5385af9bcd6fa72ef"
+  dependencies:
+    "@types/mina" "*"
 
 abbrev@1:
   version "1.1.1"
@@ -974,6 +984,10 @@ estraverse@^4.1.0, estraverse@^4.1.1:
 etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
+
+eve@~0.5.1:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/eve/-/eve-0.5.4.tgz#67d080b9725291d7e389e34c26860dd97f1debaa"
 
 event-emitter@~0.3.5:
   version "0.3.5"
@@ -2741,6 +2755,18 @@ signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
+snapsvg-cjs@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/snapsvg-cjs/-/snapsvg-cjs-0.0.6.tgz#3b2f56af2573d3d364c3ed5bf8885745f4d2dde1"
+  dependencies:
+    snapsvg "0.5.1"
+
+snapsvg@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/snapsvg/-/snapsvg-0.5.1.tgz#0caf52c79189a290746fc446cc5e863f6bdddfe3"
+  dependencies:
+    eve "~0.5.1"
+
 sntp@1.x.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
@@ -2924,17 +2950,9 @@ supports-color@^4.0.0, supports-color@^4.2.1:
   dependencies:
     has-flag "^2.0.0"
 
-"svg-units@https://github.com/wolfgang42/svg-units":
-  version "1.0.0"
-  resolved "https://github.com/wolfgang42/svg-units#ca5e29c51a4f8b01c30dc5cb6b2e6fb55a425c36"
-
 svg.js@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.6.3.tgz#ac07c61f54ada2745548800307bb45b4b3b519eb"
-
-svg.path.js@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/svg.path.js/-/svg.path.js-0.6.2.tgz#c5ec90685379056bfb70bd77e8f22ad1768ddcc8"
 
 tapable@^0.2.7:
   version "0.2.8"
