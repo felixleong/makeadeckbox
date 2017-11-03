@@ -6,27 +6,88 @@
 
 <body>
   <svg id="drawing" width="257mm" height="170mm" style="width: 100%">
-    <!-- The clip area
-    <rect x="20mm" y="35mm" width="63mm" height="88mm" />
+    <defs>
+      <!--
+        1. Pattern width and height is to be set w/ your desired size
+        2. Note that the image dimensions would have to match the aspect ratio
+        3. ... Any stretches to be done is supposed to be transformed
+        4. The `patternTransform` scaling factor is equivalent to 1/(scaling
+           factor of the thing we are applying the pattern to).
+           
+           Imagine it scaling down and expecting it to scale back up later.
+      -->
+      <pattern id='background' x="0" y="0" width="100mm" height="100mm" patternTransform="scale(0.26458 0.26458)" patternUnits="userSpaceOnUse">
+        <image xlink:href="round.png" x="0" y="0" width="100mm" height="100mm" />
+      </pattern>
+      
+      <pattern id="bgFront" x="24mm" y="39mm" width="63mm" height="88mm" patternUnits="userSpaceOnUse">
+        <image xlink:href="concordia.jpg" x="0" y="0" width="63mm" height="88mm" preserveAspectRatio="xMidYMin slice"/>
+      </pattern>
+      <pattern id="bgBack" x="107m" y="39mm" width="63mm" height="88mm" patternUnits="userSpaceOnUse">
+        <image xlink:href="skyscraper.png" x="0" y="0" width="63mm" height="88mm" preserveAspectRatio="xMidYMid meet"/>
+      </pattern>
 
-    <g transform="scale(3.779527) translate(103 35)">
+      <clipPath id="clipFront">
+        <rect x="24mm" y="39mm" width="63mm" height="91mm" />
+      </clipPath>
+
+      <clipPath id="clipBack">
+        <rect x="107mm" y="39mm" width="63mm" height="91mm" />
+      </clipPath>
+    </defs>
+
+
+    <g
+        id="fill"
+        transform="scale(3.779527) translate(1 1)"
+        style="fill: url(#background)">
       <path d="
-      M 0 0
+      M 0 35
 
-      h 24
-      a 8 8 0 0 0 15 0
-      h 24
+      v -7
+      a 8 8 90 0 1 8 -8
+      h 12
 
-      v 88
-      h -63
+      v -5
+      v -7
+      a 8 8 90 0 1 8 -8
+      h 53
+      a 8 8 -90 0 1 8 8
+      v 7
+      v 5
+
+      h 12
+      a 8 8 -90 0 1 8 8
+      v 7
+
+      h 63
+
+      l 15 8
+      v 78
+      l -15 8
+
+      v 20
+      h -69
+      v -20
+
+      h -103
+
       z" />
     </g>
-    -->
+
+    <g id="front" clip-path="url(#clipFront)">
+      <rect x="24mm" y="39mm" width="63mm" height="88mm" fill="url(#bgFront)" />
+      <image xlink:href="graphy.png" x="27mm" y="49mm" width="57mm" height="15mm" preserveAspectRatio="xMidYMin slice" />
+    </g>
+
+    <g id="back" clip-path="url(#clipBack)">
+      <rect x="107mm" y="39mm" width="63mm" height="88mm" fill="url(#bgBack)" />
+    </g>
     
     <!-- 96 dpi: Would expect  -->
     <g
         id="deckbox"
-        transform="scale(3.779527) translate(1 1)"
+        transform="scale(3.779527) translate(4 4)"
         style="fill: none; stroke: #faa; stroke-width: 0.264585pt">
       <path d="
       M 0 35
@@ -94,16 +155,15 @@
 
     <g
         id="fold"
-        transform="translate(3.7795 3.7795)"
         style="fill: none; stroke: #ccc; stroke-width: 1pt; stroke-dasharray: 1mm">
-      <line x1="24mm" y1="15mm" x2="79mm" y2="15mm" />
-      <line x1="0mm" y1="35mm" x2="103mm" y2="35mm" />
-      <line x1="0mm" y1="123mm" x2="166mm" y2="123mm" />
+      <line x1="28mm" y1="19mm" x2="83mm" y2="19mm" />
+      <line x1="4mm" y1="39mm" x2="107mm" y2="39mm" />
+      <line x1="4mm" y1="127mm" x2="170mm" y2="127mm" />
 
-      <line x1="20mm" y1="35mm" x2="20mm" y2="123mm" />
-      <line x1="83mm" y1="35mm" x2="83mm" y2="123mm" />
-      <line x1="103mm" y1="35mm" x2="103mm" y2="123mm" />
-      <line x1="166mm" y1="35mm" x2="166mm" y2="123mm" />
+      <line x1="24mm" y1="39mm" x2="24mm" y2="127mm" />
+      <line x1="87mm" y1="39mm" x2="87mm" y2="127mm" />
+      <line x1="107mm" y1="39mm" x2="107mm" y2="127mm" />
+      <line x1="170mm" y1="39mm" x2="170mm" y2="127mm" />
     </g>
   </svg>
 </body>
