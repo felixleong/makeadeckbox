@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+
+<body>
+  {{!--
+  The page and height, currently am setting it a margin of at 10mm on each side
+  --}}
+  <svg id="drawing" width="277mm" height="190mm" style="width: 100%">
+
+    {{!-- The base cutting edge --}}
+    <g
+        id="deckbox"
+        transform="scale({{ deckbox.dpiScale }})"
+        style="fill: none; stroke: #faa; stroke-width: 0.1323pt">
+      {{#each deckbox.cutlinePaths }}
+      <path d="{{ this }}" />
+      {{/each}}
+    </g>
+  </svg>
+
+</body>
+</html>
