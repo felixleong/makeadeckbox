@@ -9,11 +9,20 @@
   The page and height, currently am setting it a margin of at 10mm on each side
   --}}
   <svg id="drawing" width="277mm" height="190mm" style="width: 100%">
+    {{!-- The deckbox background --}}
+    <g
+        id="deck_bg"
+        transform="scale({{ deckbox.dpiScale }})"
+        style="fill: #ffb; stroke: #aaf; stroke-width: 0.1323pt">
+      <path d="{{ deckbox.backgroundPath }}" />
+    </g>
 
     {{!-- The base cutting edge --}}
     <g
-        id="deckbox"
-        transform="scale({{ deckbox.dpiScale }})"
+        id="deck_cutline"
+        transform="
+          translate({{ deckbox.userunitOrigin }})
+          scale({{ deckbox.dpiScale }})"
         style="fill: none; stroke: #faa; stroke-width: 0.1323pt">
       {{#each deckbox.cutlinePaths }}
       <path d="{{ this }}" />

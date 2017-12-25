@@ -10,25 +10,64 @@ enum Unit {
 export class Deckbox {
   private readonly FLAP_RADIUS = 8
   private readonly GLUE_TAB_OFFSET = 3
+  private readonly BLEED_OFFSET = 3
 
   constructor(
     readonly width: decimal.Decimal,
     readonly height: decimal.Decimal,
     readonly depth: decimal.Decimal,
-    readonly unit: Unit = Unit.mm,
     readonly tabSize: decimal.Decimal = new decimal('15'),
     readonly tolerance: decimal.Decimal = new decimal('0.5'),
     readonly dpi: number = 96
   ) { };
 
   get dpiScale(): number {
-    if (this.unit == Unit.cm) {
-      return this.dpi / 2.54
-    } else if (this.unit == Unit.mm) {
-      return this.dpi / 25.4
-    } else {
-      return this.dpi
-    }
+    return this.dpi / 25.4
+  }
+
+  get backgroundPath(): string {
+    return (
+      // Origin point
+      `M 0 ${this.tabSize.plus(this.depth).plus(this.BLEED_OFFSET)} ` +
+
+      // Top-left flap
+      `v -${this.tabSize.plus(this.BLEED_OFFSET).minus(this.FLAP_RADIUS)} ` +
+      `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} 90 0 1 ` +
+      `  ${this.FLAP_RADIUS} -${this.FLAP_RADIUS} ` +
+      `h ${this.depth.minus(this.FLAP_RADIUS)} ` +
+
+      // Top flap
+      `v -${this.depth.minus(this.FLAP_RADIUS)} ` +
+      `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} 90 0 1 ` +
+      `  ${this.FLAP_RADIUS} -${this.FLAP_RADIUS} ` +
+      `h ${
+        this.width.plus(this.BLEED_OFFSET *2).minus(this.FLAP_RADIUS * 2)} ` +
+      `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} -90 0 1 ` +
+      `  ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} ` +
+      `v ${this.depth.minus(this.FLAP_RADIUS)} ` +
+
+      // Top-right flap
+      `h ${this.depth.minus(this.FLAP_RADIUS)} ` +
+      `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} -90 0 1 ` +
+      `  ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} ` +
+      `v ${this.tabSize.minus(this.FLAP_RADIUS)} ` +
+
+      // Back segment
+      `h ${this.width} ` +
+      `v ${this.height.plus(this.depth).plus(this.BLEED_OFFSET * 2)} ` +
+      `h -${this.width.plus(this.BLEED_OFFSET * 2)} ` +
+      `v -${this.depth} ` +
+
+      // Front-bottom flaps
+      `h -${this.depth.times(2).plus(this.width)} ` +
+
+      // Close path
+      'z')
+  }
+
+  get userunitOrigin(): string {
+    let coord = this.dpiScale * this.BLEED_OFFSET
+    return `${coord} ${coord}`
   }
 
   get cutlinePaths(): string[] {
@@ -44,7 +83,8 @@ export class Deckbox {
         // Top-left flap
         `h ${this.tolerance} ` +
         `v -${this.tabSize.minus(this.FLAP_RADIUS)} ` +
-        `a 8 8 90 0 1 8 -8 ` +
+        `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} 90 0 1 ` +
+        `  ${this.FLAP_RADIUS} -${this.FLAP_RADIUS} ` +
         `h ${this.depth.minus(this.FLAP_RADIUS + 1)} ` +
         `v ${this.tabSize} ` +
         `h ${this.tolerance} ` +
@@ -53,9 +93,11 @@ export class Deckbox {
         `v -${this.depth} ` +
         `h ${this.tolerance} ` +
         `v -${this.tabSize.minus(this.FLAP_RADIUS)} ` +
-        `a 8 8 90 0 1 8 -8 ` +
+        `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} 90 0 1 ` +
+        `  ${this.FLAP_RADIUS} -${this.FLAP_RADIUS} ` +
         `h ${this.width.minus(this.FLAP_RADIUS * 2 + 1)} ` +
-        `a 8 8 -90 0 1 8 8 ` +
+        `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} -90 0 1 ` +
+        `  ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} ` +
         `v ${this.tabSize.minus(this.FLAP_RADIUS)} ` +
         `h ${this.tolerance} ` +
         `v ${this.depth} ` +
@@ -64,7 +106,8 @@ export class Deckbox {
         `h ${this.tolerance} ` +
         `v -${this.tabSize} ` +
         `h ${this.depth.minus(this.FLAP_RADIUS + 1)} ` +
-        `a 8 8 -90 0 1 8 8 ` +
+        `a ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} -90 0 1 ` +
+        `  ${this.FLAP_RADIUS} ${this.FLAP_RADIUS} ` +
         `v ${this.tabSize.minus(this.FLAP_RADIUS)} ` +
         `h ${this.tolerance} ` +
 
@@ -76,7 +119,8 @@ export class Deckbox {
         // Glue tab - right
         `l ${this.depth.minus(this.GLUE_TAB_OFFSET)} ${this.GLUE_TAB_OFFSET} ` +
         `v ${this.height.minus(this.GLUE_TAB_OFFSET * 2) } ` +
-        `l -${this.depth.minus(this.GLUE_TAB_OFFSET)} ${this.GLUE_TAB_OFFSET} ` +
+        `l -${this.depth.minus(this.GLUE_TAB_OFFSET)}
+           ${this.GLUE_TAB_OFFSET} ` +
 
         // Bottom flap
         `v ${this.depth} h -${this.width} v -${this.depth} ` +
@@ -98,6 +142,22 @@ export class Deckbox {
 
         // Close path
         'z'
+      ),
+
+      // Top flap notch - left
+      (
+        `M ${this.depth.plus(this.tolerance)}
+           ${this.tabSize.minus(this.tolerance)} ` +
+        'h 2 ' +
+        'a 2 2 -90 0 1 2 1'
+      ),
+
+      // Top flap notch - right
+      (
+        `M ${this.depth.plus(this.width).minus(this.tolerance)}
+           ${this.tabSize.minus(this.tolerance)} ` +
+        'h -2 ' +
+        'a 2 2 90 0 0 -2 1'
       )
     ]
   }
